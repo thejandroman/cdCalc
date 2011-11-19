@@ -6,11 +6,19 @@ if [[ $UID -ne 0 ]]; then
     exit 1
 fi
 
+# Modify sources.list to allow all repos
+sed -i "s/# deb /deb /g" /etc/apt/sources.list
+
 # Add Mongo repo and keys
-apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" > /etc/apt/sources.d/10gen
+echo "# MongoDB Repo" >> /etc/apt/sources.list
+echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" >> /etc/apt/sources.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 
 # Install packages
-apt-get update
-apt-get install mongodb-10gen
+aptitude update
+aptitude -y install dkms build-essential emacs23-nox git mongodb-10gen
+
+# Git clone
+mkdir -p /opt/git
+rm -rf /opt/git/*
+git clone git://github.com/thejandroman/thejandroman.git
