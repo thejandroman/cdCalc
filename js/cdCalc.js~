@@ -1,8 +1,6 @@
-$('.tooltip-hover').tooltip({
-    selector: "a[rel=tooltip]"
-});
 
-//$(document).ready(function(){
+
+$(document).ready(function(){
     /**
        function isDigit(a){
        var intRegex = /^\d+$/;
@@ -40,9 +38,10 @@ $('.tooltip-hover').tooltip({
      * d = number of years to compound
      */
 
-    /*
-      function compInt(a,b,c,d){
-      return a * pow((1 + (b/c)),(d*c));
-      }
-    */
-//});
+/*
+    function compInt(a,b,c,d){
+        return a * pow((1 + (b/c)),(d*c));
+    }
+*/
+});
+
